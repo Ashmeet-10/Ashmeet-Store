@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation'
 import { addToCart, removeFromCart } from '@lib/actions'
 import { useTransition } from 'react'
 
-const CartActions = ({ userId, productId, selectedColor, selectedSize }) => {
+const CartActions = ({ productId, selectedColor, selectedSize }) => {
   const router = useRouter()
   const [isPending1, startTransition1] = useTransition()
   const [isPending2, startTransition2] = useTransition()
@@ -13,13 +13,14 @@ const CartActions = ({ userId, productId, selectedColor, selectedSize }) => {
     <div className='flex space-x-4'>
       <button
         type='button'
-        className={`flex h-9 w-9 items-center justify-center rounded-lg border border-gray-500 text-2xl duration-300 ease-in-out hover:scale-110 ${
+        aria-label='decrease product quantity in cart'
+        className={`flex h-10 w-10 items-center justify-center rounded-full border-2 border-gray-400 text-xl duration-300 ease-in-out hover:scale-110 ${
           isPending1 ? 'animate-pulse opacity-60' : ''
         }`}
         disabled={isPending1 || isPending2}
         onClick={() =>
           startTransition1(() => {
-            removeFromCart(userId, productId, selectedColor, selectedSize)
+            removeFromCart(productId, selectedColor, selectedSize)
             router.refresh()
           })
         }
@@ -28,13 +29,14 @@ const CartActions = ({ userId, productId, selectedColor, selectedSize }) => {
       </button>
       <button
         type='button'
-        className={`flex h-9 w-9 items-center justify-center rounded-lg border border-gray-500 text-xl duration-300 ease-in-out hover:scale-110 ${
+        aria-label='increase product quantity in cart'
+        className={`flex h-10 w-10 items-center justify-center rounded-full border-2 border-gray-400 text-xl duration-300 ease-in-out hover:scale-110 ${
           isPending2 ? 'animate-pulse opacity-60' : ''
         }`}
         disabled={isPending1 || isPending2}
         onClick={() =>
           startTransition2(() => {
-            addToCart(userId, productId, selectedColor, selectedSize)
+            addToCart(productId, selectedColor, selectedSize)
             router.refresh()
           })
         }

@@ -38,6 +38,7 @@ const WishlistButton = ({ product, isWishlisted }) => {
   // )
   const router = useRouter()
   const [isPending, setIsPending] = useState(false)
+
   const handleClick = async (setIsPending) => {
     try {
       setIsPending(() => true)
@@ -47,7 +48,6 @@ const WishlistButton = ({ product, isWishlisted }) => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          // userId: user,
           productId: product,
         }),
         cache: 'no-store',
@@ -61,12 +61,14 @@ const WishlistButton = ({ product, isWishlisted }) => {
       setIsPending(() => false)
     }
   }
+
   return (
-    <button type='button' onClick={() => handleClick(setIsPending)}>
+    <button aria-label='wishlist' type='button' onClick={() => handleClick(setIsPending)}>
       <HeartIconFilled
         className={`h-6 w-6 text-gray-400 ${
           isPending ? 'animate-pulse ease-in-out' : ''
         }`}
+        disabled={isPending}
       />
     </button>
   )

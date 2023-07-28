@@ -6,7 +6,7 @@ const CheckoutButton = ({ amount }) => {
   const handleCheckout = async () => {
     const stripe = await getStripe()
 
-    const response = await fetch('http://localhost:3000/api/stripe', {
+    const response = await fetch('/api/stripe', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -26,6 +26,7 @@ const CheckoutButton = ({ amount }) => {
   return (
     <button
       type='button'
+      aria-label='checkout'
       onClick={handleCheckout}
       className='rounded-lg bg-black px-3 py-2 text-white duration-300 ease-in-out hover:scale-105 hover:bg-gray-800'
     >

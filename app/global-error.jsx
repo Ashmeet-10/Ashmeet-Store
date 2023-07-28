@@ -6,7 +6,7 @@ const GlobalError = () => {
       <body>
         <div>
           <h2>Something went wrong</h2>
-          <button type='button' onClick={() => reset()}>
+          <button aria-label='Try again' type='button' onClick={() => reset()}>
             Try again
           </button>
         </div>

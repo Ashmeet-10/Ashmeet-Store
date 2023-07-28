@@ -12,6 +12,7 @@ const AvailableColors = ({
         {productColors.map((color, index) => (
           <button
             key={index}
+            aria-label={`color ${color}}`}
             onClick={() => setSelectedColorIndex(index)}
             className={`mb-2 mr-2 flex items-center rounded-full border border-gray-400 p-3 text-xs font-semibold duration-300 ease-in-out hover:ring-2 hover:ring-black ${
               index === selectedColorIndex ? 'ring-2 ring-black' : ''

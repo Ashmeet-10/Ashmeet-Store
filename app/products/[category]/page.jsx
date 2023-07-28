@@ -17,8 +17,8 @@ const Category = async ({ params: { category } }) => {
     product.category.includes(category)
   )
   return (
-    <div className='mx-4 flex flex-col'>
-      <h2 className='my-6 text-3xl font-medium capitalize'>{category}</h2>
+    <div className='mx-4 flex min-h-[90vh] flex-col lg:mx-8'>
+      <h2 className='my-6 text-3xl font-medium capitalize lg:text-4xl lg:my-8 xl:my-10'>{category}</h2>
       <ProductsList products={categoryProducts} />
     </div>
   )

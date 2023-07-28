@@ -12,6 +12,7 @@ const AvailableSizes = ({
         {productSizes.map((size, index) => (
           <button
             key={index}
+            aria-label={`size ${size}}`}
             onClick={() => setSelectedSizeIndex(index)}
             className={`mb-2 mr-2 flex items-center rounded-full border border-gray-400 px-4 py-3 text-xs font-semibold duration-300 ease-in-out hover:ring-2 hover:ring-black ${
               index === selectedSizeIndex ? 'ring-2 ring-black' : ''

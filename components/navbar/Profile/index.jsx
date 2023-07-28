@@ -18,7 +18,7 @@ const Profile = () => {
   
   return (
     <>
-      <button type='button' onClick={OpenCloseProfile}>
+      <button aria-label='profile' type='button' onClick={OpenCloseProfile}>
         {session ? (
           <Image
             src={session?.user?.image}
@@ -33,7 +33,7 @@ const Profile = () => {
       </button>
       <div
         ref={ProfileRef}
-        className='Profile fixed left-0 top-0 z-50 h-screen w-full translate-x-full bg-white p-4 duration-300 ease-in-out'
+        className='Profile fixed left-0 top-0 z-50 h-screen w-full translate-x-full bg-white p-4 duration-300 ease-in-out md:duration-200'
       >
         <div>
           <CloseButton onClick={OpenCloseProfile} />

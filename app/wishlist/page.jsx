@@ -43,9 +43,10 @@ const WishlistPage = async () => {
         <h2 className='mb-12 mt-4 text-center text-2xl font-medium'>
           Your wishlist is empty
         </h2>
-        <Link href='/'>
+        <Link href='/' aria-label='go to Home page'>
           <button
             type='button'
+            name='Shop now'
             className='rounded-lg bg-black px-3 py-2 text-white duration-500 ease-in-out hover:scale-110 hover:bg-gray-800'
           >
             Shop Now
@@ -56,8 +57,8 @@ const WishlistPage = async () => {
   }
 
   return (
-    <div className='mx-4 flex min-h-[90vh] flex-col'>
-      <h1 className='my-6 text-4xl font-medium'>My Wishlist</h1>
+    <div className='mx-4 flex min-h-[90vh] flex-col lg:mx-8'>
+      <h1 className='my-6 text-4xl font-semibold lg:my-8 xl:my-10'>My Wishlist</h1>
       <ProductsList key={products.length} products={products} />
     </div>
   )

@@ -6,6 +6,8 @@ const CloseButton = ({ onClick }) => {
   return (
     <button
       type='button'
+      name='close'
+      aria-label='close'
       onClick={onClick}
     >
       <CloseIcon className='w-6 h-6' />

@@ -13,6 +13,7 @@ const MenuButton = () => {
     <>
       <button
         type='button'
+        aria-label='menu'
         onClick={() => OpenCloseMobileMenu()}
       >
         <MenuIcon className='w-6 h-6' />

@@ -17,6 +17,8 @@ const SearchBar = ({ onClick }) => {
       />
       <button
         type='button'
+        name='search'
+        aria-label='search'
         onClick={() => {
           if (search) {
             onClick && onClick()

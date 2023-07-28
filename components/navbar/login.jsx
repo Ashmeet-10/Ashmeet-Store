@@ -1,6 +1,6 @@
 'use client'
 
-import { useSession, signIn } from "next-auth/react"
+import { useSession, signIn } from 'next-auth/react'
 
 const LoginButton = () => {
   const { data: session } = useSession()
@@ -10,9 +10,10 @@ const LoginButton = () => {
   return (
     <>
       <button
-        type="button"
+        type='button'
+        aria-label='login'
         onClick={() => signIn()}
-        className="bg-black text-white rounded-md ease-in-out duration-300 py-2 px-4 border-black hover:bg-gray-800 hover:scale-105"
+        className='rounded-md border-black bg-black px-4 py-2 text-white duration-300 ease-in-out hover:scale-105 hover:bg-gray-800'
       >
         Login
       </button>
