@@ -2,7 +2,7 @@
 
 import getStripe from '@lib/getStripe'
 
-const CheckoutButton = ({ amount }) => {
+const CheckoutButton = ({ products }) => {
   const handleCheckout = async () => {
     const stripe = await getStripe()
 
@@ -12,7 +12,7 @@ const CheckoutButton = ({ amount }) => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        price: amount,
+        products: products,
       }),
       cache: 'no-cache',
     })

@@ -2,8 +2,8 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { getServerSession } from 'next-auth'
 import User from '@models/user'
-import { Product } from '@models/product'
-import { connectToDB } from '@utils/database'
+import Product from '@models/product'
+import connectToDB from '@utils/database'
 import CartActions from '@components/cart/CartActions'
 import LoginButton from '@components/navbar/login'
 import ShoppingBagIcon from '@components/icons/shopping-bag'
@@ -13,6 +13,7 @@ export const dynamic = 'force-dynamic'
 
 const CartPage = async () => {
   let products = [],
+    productsForCheckout = [],
     totalPrice = 0,
     totalDiscount = 0
   let user = null
@@ -34,6 +35,11 @@ const CartPage = async () => {
           (products[i].actualPrice - products[i].discountedPrice) *
           user.cart[i].quantity
       }
+      productsForCheckout = products.map((product, idx) => ({
+        name: product.name,
+        price: product.discountedPrice,
+        quantity: user.cart[idx].quantity,
+      }))
     }
   } catch (error) {
     console.log(error)
@@ -42,7 +48,9 @@ const CartPage = async () => {
   if (!user) {
     return (
       <div className='flex min-h-[90vh] flex-col items-center justify-center space-y-6'>
-        <h2 className='text-2xl font-medium'>Please Login to view your cart</h2>
+        <h2 className='text-center text-2xl font-medium'>
+          Please Login to view your cart
+        </h2>
         <LoginButton />
       </div>
     )
@@ -67,7 +75,7 @@ const CartPage = async () => {
 
   return (
     <div className='mx-auto flex min-h-[90vh] max-w-6xl flex-col px-4 lg:px-8'>
-      <h1 className='my-6 text-4xl font-semibold lg:my-8 xl:my-10 xl:text-5xl'>
+      <h1 className='my-6 text-4xl font-bold lg:my-8 xl:my-10 xl:text-5xl'>
         My Cart
       </h1>
       {products.map((product, idx) => (
@@ -78,15 +86,15 @@ const CartPage = async () => {
           <Link
             href={`/products/${product.category.split(' ')[0]}/${product._id}`}
             aria-label={`go to ${product.name}`}
+            className='group'
           >
             <div className='flex items-center space-x-4 md:space-x-10 xl:space-x-16 2xl:space-x-24'>
-              <div className='aspect-square w-2/5 max-w-[15rem] rounded-2xl border border-gray-400 bg-white p-2 shadow-[0px_0px_10px_1px] shadow-gray-300 sm:p-4'>
+              <div className='aspect-square w-2/5 max-w-[15rem] rounded-2xl border border-gray-400 bg-white p-2 shadow-[0px_0px_10px_1px] shadow-gray-300 duration-300 ease-in-out group-hover:scale-105 sm:p-4'>
                 <div className='relative h-full'>
                   <Image
                     src={product.images[0]}
                     alt={product.name}
                     fill
-                    priority
                     className='object-contain'
                   />
                 </div>
@@ -177,7 +185,7 @@ const CartPage = async () => {
             {(totalPrice - totalDiscount).toLocaleString()}
           </span>
         </span>
-        <CheckoutButton amount={totalPrice - totalDiscount} />
+        <CheckoutButton products={productsForCheckout} />
       </div>
     </div>
   )

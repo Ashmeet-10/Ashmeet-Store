@@ -1,4 +1,4 @@
-import { Schema, model, models } from 'mongoose';
+import { Schema, model, models } from 'mongoose'
 
 const ProductSchema = new Schema({
   name: {
@@ -53,11 +53,11 @@ const ProductSchema = new Schema({
     type: String,
     required: [true, 'Product brand is required!'],
   },
-  details:{
+  details: {
     type: [Object],
     default: [],
   },
-  qna:{
+  qna: {
     type: [Object],
     required: [true, 'Product qna is required!'],
   },
@@ -69,14 +69,8 @@ const ProductSchema = new Schema({
     type: [Object],
     default: [],
   },
-});
+})
 
-const Product = models.Product || model("Product", ProductSchema);
-const Laptops = models.Laptops || model("Laptops", ProductSchema);
-const Mobiles = models.Mobiles || model("Mobiles", ProductSchema);
-const Watches = models.Watches || model("Watches", ProductSchema);
-const Earphones = models.Earphones || model("Earphones", ProductSchema);
-const Shirts = models.Shirts || model("Shirts", ProductSchema);
-const Shoes = models.Shoes || model("Shoes", ProductSchema);
+const Product = models.Product || model('Product', ProductSchema)
 
-export { Product, Laptops, Earphones, Mobiles, Shirts, Shoes, Watches };
+export default Product

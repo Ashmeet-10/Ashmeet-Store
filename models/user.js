@@ -22,6 +22,12 @@ const UserSchema = new Schema({
     selectedColor: String,
     selectedSize: String,
   }],
+  checkoutIds: {
+    type: [String],
+  },
+  orders: {
+    type: [Object],
+  },
 })
 
 const User = models.User || model('User', UserSchema)

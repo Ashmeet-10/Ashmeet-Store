@@ -1,8 +1,8 @@
 import Link from 'next/link'
 import { getServerSession } from 'next-auth'
-import { connectToDB } from '@utils/database'
+import connectToDB from '@utils/database'
 import User from '@models/user'
-import { Product } from '@models/product'
+import Product from '@models/product'
 import LoginButton from '@components/navbar/login'
 import ProductsList from '@components/products/ProductsList'
 import HeartIconFilled from '@components/icons/heart-filled'
@@ -58,8 +58,8 @@ const WishlistPage = async () => {
 
   return (
     <div className='mx-4 flex min-h-[90vh] flex-col lg:mx-8'>
-      <h1 className='my-6 text-4xl font-semibold lg:my-8 xl:my-10'>My Wishlist</h1>
-      <ProductsList key={products.length} products={products} />
+      <h1 className='my-6 text-4xl font-bold lg:my-8 xl:my-10 xl:text-5xl'>My Wishlist</h1>
+      <ProductsList products={products} wishlist={true} />
     </div>
   )
 }

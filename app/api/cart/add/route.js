@@ -1,5 +1,5 @@
 import User from '@models/user'
-import { connectToDB } from '@utils/database'
+import connectToDB from '@utils/database'
 import { getServerSession } from 'next-auth'
 import { NextResponse } from 'next/server'
 
@@ -9,6 +9,10 @@ export const POST = async (req, res) => {
     const sessionData = getServerSession()
     const requestBody = req.json()
     const [db, session, reqBody] = await Promise.all([database, sessionData, requestBody])
+
+    if(!session)
+      return NextResponse.json({message: 'not logged in'})
+    
     const {productId, selectedColor, selectedSize} = reqBody
     let isPresent = false
     const userInfo = await User.findOne({ email: session.user.email })

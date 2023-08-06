@@ -1,7 +1,7 @@
 import SearchIcon from '@components/icons/search'
 import ProductsList from '@components/products/ProductsList'
-import { Product } from '@models/product'
-import { connectToDB } from '@utils/database'
+import Product from '@models/product'
+import connectToDB from '@utils/database'
 
 const SearchResultsPage = async ({ params: { query } }) => {
   let products, filteredProducts

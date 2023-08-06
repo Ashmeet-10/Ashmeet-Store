@@ -5,17 +5,16 @@ import { addToCart } from '@lib/actions'
 import { useState, useTransition } from 'react'
 import AvailableColors from './AvailableColors'
 import AvailableSizes from './AvailableSizes'
+import { useToast } from '@components/ui/use-toast'
+import { CheckCircleIcon, X } from 'lucide-react'
 
-const AddToCartButton = ({
-  productId,
-  productColors,
-  productSizes,
-}) => {
+const AddToCartButton = ({ productId, productColors, productSizes }) => {
   const router = useRouter()
   // const [isPending, startTransition] = useTransition()
   const [isPending, setIsPending] = useState(false)
   const [selectedColorIndex, setSelectedColorIndex] = useState(0)
   const [selectedSizeIndex, setSelectedSizeIndex] = useState(0)
+  const { toast } = useToast()
 
   const handleClick = async (setIsPending) => {
     try {
@@ -33,15 +32,45 @@ const AddToCartButton = ({
         cache: 'no-store',
       })
       const data = await response.json()
+      if (data?.message === 'success')
+        toast({
+          description: (
+            <div className='flex items-center space-x-3'>
+              <CheckCircleIcon size={24} className='text-green-600' />
+              <p>Product added to cart.</p>
+            </div>
+          ),
+        })
+
+      else if (data?.message === 'not logged in')
+        toast({ description: 'Please Login to add product to cart.' })
+        
+      else if (data?.message === 'failure')
+        toast({
+          description: (
+            <div className='flex items-center space-x-3'>
+              <X size={24} className='text-red-600' />
+              <p>Error in adding Product to cart</p>
+            </div>
+          ),
+        })
       console.log(data)
       router.refresh()
     } catch (error) {
+      toast({
+        description: (
+          <div className='flex items-center space-x-3'>
+            <X size={24} className='text-red-600' />
+            <p>Error in adding Product to cart</p>
+          </div>
+        ),
+      })
       console.log(error)
     } finally {
       setIsPending(() => false)
     }
   }
-  
+
   return (
     <div className=''>
       <button

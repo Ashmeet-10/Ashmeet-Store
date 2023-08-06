@@ -1,7 +1,7 @@
-import { connectToDB } from '@utils/database'
-import { Product } from '@models/product'
+import connectToDB from '@utils/database'
+import Product from '@models/product'
 import FilledStar from '@components/icons/star-filled'
-import WishlistButton from '@components/products/WishlistButton'
+import AddToWishlistButton from '@components/products/AddToWishlistButton'
 import AddToCartButton from '@components/products/AddToCartButton'
 import ProductImagesCarousel from '@components/products/ProductImagesCarousel'
 
@@ -50,7 +50,7 @@ const ProductDetailPage = async ({ params }) => {
           <div className='mx-auto max-w-xs sm:mx-0 sm:w-1/2 sm:max-w-sm sm:rounded-2xl sm:border sm:border-gray-400 sm:px-6 sm:pb-4 sm:pt-6 sm:shadow-[0px_0px_50px_5px] sm:shadow-gray-300 lg:max-w-md'>
             <ProductImagesCarousel productImages={product.images} />
             <div className='my-2 flex justify-end'>
-              <WishlistButton
+              <AddToWishlistButton
                 product={product._id.toString()}
                 isWishlisted={false}
               />

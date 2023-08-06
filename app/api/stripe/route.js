@@ -7,25 +7,26 @@ const serverUrl = isProduction ? process.env.NEXT_PUBLIC_SERVER_URL : 'http://lo
 
 export const POST = async (req, res) => {
   const reqBody = await req.json()
+  const { products} = reqBody
   try {
     const params = {
       submit_type: 'pay',
       mode: 'payment',
       payment_method_types: ['card'],
       billing_address_collection: 'auto',
-      line_items: [
-        {
+      line_items: products.map((product) => {
+        return {
           price_data: {
             currency: 'inr',
             product_data: {
-              name: 'payment',
+              name: product.name,
             },
-            unit_amount: (reqBody.price) * 100,
+            unit_amount: (product.price) * 100,
           },
-          quantity: 1,
-        },
-      ],
-      success_url: `${serverUrl}?session_id={CHECKOUT_SESSION_ID}`,
+          quantity: product.quantity,
+        }
+      }),
+      success_url: `${serverUrl}/success?sessionId={CHECKOUT_SESSION_ID}`,
       cancel_url: `${serverUrl}`,
     }
 

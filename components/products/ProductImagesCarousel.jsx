@@ -12,10 +12,10 @@ const ProductImagesCarousel = ({ productImages }) => {
             <Image
               src={image}
               fill
-              quality={100}
-              alt='Product Image'
+              quality={90}
               className='object-contain'
-              priority
+              priority={index === 0}
+              alt='Product Image'
             />
           </div>
         ))}
