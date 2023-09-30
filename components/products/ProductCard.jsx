@@ -3,17 +3,18 @@ import FilledStar from '@components/icons/star-filled'
 import Image from 'next/image'
 import RemoveFromWishlistButton from './RemoveFromWishlistButton'
 
-const ProductCard = ({ product, wishlist }) => {
+const ProductCard = ({ product, wishlist, priority }) => {
   return (
     <div className='overflow-hidden rounded-xl p-4 shadow-[0px_0px_10px_1px] shadow-gray-300 duration-300 ease-in-out hover:scale-105'>
       <Link
         href={`/products/${product.category.split(' ')[0]}/${product._id}`}
-        aria-label={`go to ${product.name}`}
+        aria-label={`${product.name}`}
       >
         <div className='relative mx-auto aspect-square w-11/12 bg-white'>
           <Image
             src={product.images[0]}
             fill
+            priority={priority || false}
             quality={90}
             className='object-contain'
             alt={product.name}

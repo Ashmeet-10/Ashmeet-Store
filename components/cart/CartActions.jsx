@@ -1,11 +1,9 @@
 'use client'
 
-import { useRouter } from 'next/navigation'
 import { addToCart, removeFromCart } from '@lib/actions'
 import { useTransition } from 'react'
 
 const CartActions = ({ productId, selectedColor, selectedSize }) => {
-  const router = useRouter()
   const [isPending1, startTransition1] = useTransition()
   const [isPending2, startTransition2] = useTransition()
   console.log(selectedColor, selectedSize)
@@ -19,10 +17,7 @@ const CartActions = ({ productId, selectedColor, selectedSize }) => {
         }`}
         disabled={isPending1 || isPending2}
         onClick={() =>
-          startTransition1(() => {
-            removeFromCart(productId, selectedColor, selectedSize)
-            router.refresh()
-          })
+          startTransition1(() => removeFromCart(productId, selectedColor, selectedSize))
         }
       >
         -
@@ -35,10 +30,7 @@ const CartActions = ({ productId, selectedColor, selectedSize }) => {
         }`}
         disabled={isPending1 || isPending2}
         onClick={() =>
-          startTransition2(() => {
-            addToCart(productId, selectedColor, selectedSize)
-            router.refresh()
-          })
+          startTransition2(() => addToCart(productId, selectedColor, selectedSize))
         }
       >
         +

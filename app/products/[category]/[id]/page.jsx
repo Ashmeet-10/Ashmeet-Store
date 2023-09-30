@@ -14,32 +14,6 @@ export async function generateStaticParams() {
 }
 
 const ProductDetailPage = async ({ params }) => {
-  // const sessionData = getServerSession()
-  // const database = connectToDB()
-  // const [session, db] = await Promise.all([sessionData, database])
-  // let product
-  // let user
-  // if (session) {
-  //   const userPromise = User.findOne({ email: session.user.email })
-  //   const productPromise = Product.findById(params.id)
-  //   const [userdata, productdata] = await Promise.all([
-  //     userPromise,
-  //     productPromise,
-  //   ])
-  //   user = userdata
-  //   product = productdata
-  // } else {
-  //   product = await Product.findById(params.id)
-  // }
-  // let userId = null,
-  //   productId = null,
-  //   isWishlisted = null
-  // if (user) {
-  //   userId = user._id.toString()
-  //   productId = product._id.toString()
-  //   isWishlisted = user.wishlist.includes(productId)
-  // }
-
   await connectToDB()
   const product = await Product.findById(params.id)
 
@@ -76,9 +50,9 @@ const ProductDetailPage = async ({ params }) => {
                 &#8377;{product.discountedPrice.toLocaleString()}
               </p>
             </div>
-            <p className='font-semibold text-green-600'>
+            <p className='font-semibold text-green-700'>
               FREE Delivery{' '}
-              <span className='text-gray-500 line-through decoration-1'>
+              <span className='text-gray-600 line-through decoration-1'>
                 &#8377;40
               </span>
             </p>
@@ -117,7 +91,7 @@ const ProductDetailPage = async ({ params }) => {
                   key={index}
                   className='flex space-x-2 border-b border-gray-200 py-3'
                 >
-                  <div className='w-2/5 text-gray-400 lg:w-1/4'>
+                  <div className='w-2/5 text-zinc-500 lg:w-1/4'>
                     {specification.spec}
                   </div>
                   <div className='w-3/5 break-words lg:w-3/4'>

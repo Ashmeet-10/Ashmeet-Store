@@ -40,7 +40,7 @@ const OrdersPage = async () => {
   if (!user) {
     return (
       <div className='flex min-h-[90vh] flex-col items-center justify-center space-y-6'>
-        <h2 className='text-2xl font-medium text-center'>
+        <h2 className='text-center text-2xl font-medium'>
           Please Login to view your Orders
         </h2>
         <LoginButton />
@@ -51,7 +51,7 @@ const OrdersPage = async () => {
     return (
       <div className='flex min-h-[90vh] flex-col items-center justify-center'>
         <ShoppingBagIcon className='h-16 w-16' />
-        <h2 className='mb-12 mt-4 text-2xl font-medium'>
+        <h2 className='mb-12 mt-4 text-center text-2xl font-medium'>
           You have not ordered anything yet!!
         </h2>
         <Link href='/'>
@@ -89,6 +89,7 @@ const OrdersPage = async () => {
                     src={product.images[0]}
                     alt={product.name}
                     fill
+                    quality={90}
                     className='object-contain'
                   />
                 </div>
