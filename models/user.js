@@ -6,28 +6,19 @@ const UserSchema = new Schema({
     unique: [true, 'Email already exists!'],
     required: [true, 'Email is required!'],
   },
-  username: {
-    type: String,
-    required: [true, 'Username is required!'],
-  },
-  image: {
-    type: String,
-  },
-  wishlist: {
-    type: [String],
-  },
-  cart: [{
-    productId: String,
-    quantity: Number,
-    selectedColor: String,
-    selectedSize: String,
-  }],
-  checkoutIds: {
-    type: [String],
-  },
-  orders: {
-    type: [Object],
-  },
+  username: { type: String, required: [true, 'Username is required!'] },
+  image: { type: String },
+  wishlist: [{ type: Schema.Types.ObjectId, ref: 'Product' }],
+  cart: [
+    {
+      productId: { type: Schema.Types.ObjectId, ref: 'Product' },
+      quantity: Number,
+      selectedColor: String,
+      selectedSize: String,
+    },
+  ],
+  checkoutIds: { type: [String] },
+  orders: { type: [Object] },
 })
 
 const User = models.User || model('User', UserSchema)

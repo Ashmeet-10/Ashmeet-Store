@@ -10,7 +10,9 @@ import Link from 'next/link'
 const page = async ({ params: { category }, searchParams }) => {
   console.log('filters page')
   await connectToDB()
-  const products = await Product.find({})
+  const products = await Product.find({}).select(
+    'name rating discountedPrice actualPrice images category'
+  )
   const categoryProducts = products.filter((product) =>
     product.category.includes(category)
   )
@@ -26,10 +28,14 @@ const page = async ({ params: { category }, searchParams }) => {
         product.discountedPrice >= Number(priceRange[0]) &&
         product.discountedPrice <= Number(priceRange[1])
     )
-    if (priceRange[0] === '0' && priceRange[1] === '749')   defaultPriceRange = '₹0-₹749'
-    if (priceRange[0] === '750' && priceRange[1] === '1499')    defaultPriceRange = '₹750-₹1499'
-    if (priceRange[0] === '1500' && priceRange[1] === '4999')   defaultPriceRange = '₹1500-₹4999'
-    if (priceRange[0] === '5000' && priceRange[1] === '10000000')   defaultPriceRange = 'above ₹5000'
+    if (priceRange[0] === '0' && priceRange[1] === '749')
+      defaultPriceRange = '₹0-₹749'
+    if (priceRange[0] === '750' && priceRange[1] === '1499')
+      defaultPriceRange = '₹750-₹1499'
+    if (priceRange[0] === '1500' && priceRange[1] === '4999')
+      defaultPriceRange = '₹1500-₹4999'
+    if (priceRange[0] === '5000' && priceRange[1] === '10000000')
+      defaultPriceRange = 'above ₹5000'
   }
   if (searchParams.ratings) {
     const ratings = searchParams.ratings

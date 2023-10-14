@@ -29,7 +29,9 @@ const OrdersPage = async () => {
       )
       console.log(productIds)
       const promises = productIds.map((item) =>
-        Product.findById(item.productId).exec()
+        Product.findById(item.productId).select(
+          'name category images discountedPrice'
+        )
       )
       products = await Promise.all(promises)
     }
@@ -83,7 +85,7 @@ const OrdersPage = async () => {
             className='group'
           >
             <div className='flex items-center space-x-4 md:space-x-10 xl:space-x-16 2xl:space-x-24'>
-              <div className='aspect-square w-2/5 max-w-[15rem] rounded-2xl border border-gray-400 bg-white p-2 shadow-[0px_0px_10px_1px] shadow-gray-300 duration-300 ease-in-out group-hover:scale-105 sm:p-4'>
+              <div className='aspect-square w-2/5 max-w-[15rem] rounded-2xl border border-gray-400 bg-white p-2 shrink-0 shadow-[0px_0px_10px_1px] shadow-gray-300 duration-300 ease-in-out group-hover:scale-105 sm:p-4'>
                 <div className='relative h-full'>
                   <Image
                     src={product.images[0]}

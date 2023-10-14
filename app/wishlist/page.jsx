@@ -2,7 +2,6 @@ import Link from 'next/link'
 import { getServerSession } from 'next-auth'
 import connectToDB from '@utils/database'
 import User from '@models/user'
-import Product from '@models/product'
 import LoginButton from '@components/navbar/login'
 import ProductsList from '@components/products/ProductsList'
 import HeartIconFilled from '@components/icons/heart-filled'
@@ -17,12 +16,11 @@ const WishlistPage = async () => {
     const sessionData = getServerSession()
     const [session, db] = await Promise.all([sessionData, database])
     if (session) {
-      user = await User.findOne({ email: session.user.email })
-      console.log('wishlist', user.wishlist)
-      const promises = user.wishlist.map((itemId) =>
-        Product.findById(itemId).exec()
-      )
-      products = await Promise.all(promises)
+      user = await User.findOne({ email: session.user.email }).populate({
+        path: 'wishlist',
+        select: 'name rating discountedPrice actualPrice images category',
+      })
+      products = user.wishlist
     }
   } catch (error) {
     console.log(error)
@@ -58,7 +56,9 @@ const WishlistPage = async () => {
 
   return (
     <div className='mx-4 flex min-h-[90vh] flex-col lg:mx-8'>
-      <h1 className='my-6 text-4xl font-bold lg:my-8 xl:my-10 xl:text-5xl'>My Wishlist</h1>
+      <h1 className='my-6 text-4xl font-bold lg:my-8 xl:my-10 xl:text-5xl'>
+        My Wishlist
+      </h1>
       <ProductsList products={products} wishlist={true} />
     </div>
   )

@@ -8,9 +8,9 @@ const ProductCard = ({ product, wishlist, priority }) => {
     <div className='overflow-hidden rounded-xl p-4 shadow-[0px_0px_10px_1px] shadow-gray-300 duration-300 ease-in-out hover:scale-105'>
       <Link
         href={`/products/${product.category.split(' ')[0]}/${product._id}`}
-        aria-label={`${product.name}`}
+        aria-label={`${product.name} ${product.rating} ${product.actualPrice.toLocaleString()} ₹${product.discountedPrice.toLocaleString()}`}
       >
-        <div className='relative mx-auto aspect-square w-11/12 bg-white'>
+        <div className='relative mx-auto shrink-0 aspect-square w-11/12 bg-white'>
           <Image
             src={product.images[0]}
             fill
@@ -34,8 +34,8 @@ const ProductCard = ({ product, wishlist, priority }) => {
           <p className='font-semibold text-gray-500 line-through lg:text-lg'>
             {product.actualPrice.toLocaleString()}
           </p>
-          <p className='text-lg font-semibold lg:text-xl'>
-            &#8377;{product.discountedPrice.toLocaleString()}
+          <p className='text-lg font-semibold line-clamp-1 lg:text-xl'>
+            ₹{product.discountedPrice.toLocaleString()}
           </p>
         </div>
       </Link>

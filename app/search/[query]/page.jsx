@@ -9,7 +9,9 @@ const SearchResultsPage = async ({ params: { query } }) => {
   let searchQuery = query.replace(/%20/g, ' ')
   try {
     await connectToDB()
-    products = await Product.find({})
+    products = await Product.find({}).select(
+      'name rating discountedPrice actualPrice images category'
+    )
     filteredProducts = products.filter((product) =>
       product.name.toLowerCase().includes(searchQuery.toLowerCase())
     )

@@ -2,7 +2,6 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { getServerSession } from 'next-auth'
 import User from '@models/user'
-import Product from '@models/product'
 import connectToDB from '@utils/database'
 import CartActions from '@components/cart/CartActions'
 import LoginButton from '@components/navbar/login'
@@ -12,8 +11,7 @@ import CheckoutButton from '@components/cart/CheckoutButton'
 export const dynamic = 'force-dynamic'
 
 const CartPage = async () => {
-  let products = [],
-    productsForCheckout = [],
+  let productsForCheckout = [],
     totalPrice = 0,
     totalDiscount = 0
   let user = null
@@ -22,22 +20,24 @@ const CartPage = async () => {
     const sessionData = getServerSession()
     const [session, db] = await Promise.all([sessionData, database])
     if (session) {
-      user = await User.findOne({ email: session.user.email })
-      console.log('cart', user.cart)
-      const promises = user.cart.map((item) =>
-        Product.findById(item.productId).exec()
-      )
-      products = await Promise.all(promises)
+      user = await User.findOne({ email: session.user.email }).populate({
+        path: 'cart',
+        populate: {
+          path: 'productId',
+          select: 'name rating discountedPrice actualPrice images category',
+        },
+      })
 
-      for (let i = 0; i < products.length; i++) {
-        totalPrice += products[i].actualPrice * user.cart[i].quantity
+      for (let i = 0; i < user.cart.length; i++) {
+        totalPrice += user.cart[i].productId.actualPrice * user.cart[i].quantity
         totalDiscount +=
-          (products[i].actualPrice - products[i].discountedPrice) *
+          (user.cart[i].productId.actualPrice -
+            user.cart[i].productId.discountedPrice) *
           user.cart[i].quantity
       }
-      productsForCheckout = products.map((product, idx) => ({
-        name: product.name,
-        price: product.discountedPrice,
+      productsForCheckout = user.cart.map((product, idx) => ({
+        name: product.productId.name,
+        price: product.productId.discountedPrice,
         quantity: user.cart[idx].quantity,
       }))
     }
@@ -55,7 +55,7 @@ const CartPage = async () => {
       </div>
     )
   }
-  if (!products.length) {
+  if (!user.cart.length) {
     return (
       <div className='flex min-h-[90vh] flex-col items-center justify-center'>
         <ShoppingBagIcon className='h-16 w-16' />
@@ -78,22 +78,24 @@ const CartPage = async () => {
       <h1 className='my-6 text-4xl font-bold lg:my-8 xl:my-10 xl:text-5xl'>
         My Cart
       </h1>
-      {products.map((product, idx) => (
+      {user.cart.map(({ productId }, idx) => (
         <div
           key={idx}
           className='flex flex-col space-y-4 border-b border-gray-300 py-5 sm:py-10 lg:space-y-8'
         >
           <Link
-            href={`/products/${product.category.split(' ')[0]}/${product._id}`}
-            aria-label={`go to ${product.name}`}
+            href={`/products/${productId.category.split(' ')[0]}/${
+              productId._id
+            }`}
+            aria-label={`go to ${productId.name}`}
             className='group'
           >
             <div className='flex items-center space-x-4 md:space-x-10 xl:space-x-16 2xl:space-x-24'>
-              <div className='aspect-square w-2/5 max-w-[15rem] rounded-2xl border border-gray-400 bg-white p-2 shadow-[0px_0px_10px_1px] shadow-gray-300 duration-300 ease-in-out group-hover:scale-105 sm:p-4'>
+              <div className='aspect-square w-2/5 max-w-[15rem] rounded-2xl border border-gray-400 bg-white p-2 shadow-[0px_0px_10px_1px] shadow-gray-300 duration-300 ease-in-out shrink-0 group-hover:scale-105 sm:p-4'>
                 <div className='relative h-full'>
                   <Image
-                    src={product.images[0]}
-                    alt={product.name}
+                    src={productId.images[0]}
+                    alt={productId.name}
                     fill
                     quality={90}
                     className='object-contain'
@@ -102,7 +104,7 @@ const CartPage = async () => {
               </div>
               <div className='w-3/5 sm:w-full'>
                 <p className='mt-2 line-clamp-1 md:line-clamp-2 lg:text-lg'>
-                  {product.name}
+                  {productId.name}
                 </p>
                 <div className='flex flex-col'>
                   {user.cart[idx].selectedColor && (
@@ -119,13 +121,13 @@ const CartPage = async () => {
                     <p className='decoration-slice text-lg text-gray-500 line-through lg:text-xl'>
                       &#8377;
                       {(
-                        product.actualPrice * user.cart[idx].quantity
+                        productId.actualPrice * user.cart[idx].quantity
                       ).toLocaleString()}
                     </p>
                     <p className='text-xl lg:text-2xl'>
                       &#8377;
                       {(
-                        product.discountedPrice * user.cart[idx].quantity
+                        productId.discountedPrice * user.cart[idx].quantity
                       ).toLocaleString()}
                     </p>
                   </div>
@@ -142,7 +144,7 @@ const CartPage = async () => {
               Qty: {user.cart[idx].quantity}
             </button>
             <CartActions
-              productId={product._id.toString()}
+              productId={productId._id.toString()}
               selectedColor={user.cart[idx].selectedColor}
               selectedSize={user.cart[idx].selectedSize}
             />
@@ -157,7 +159,7 @@ const CartPage = async () => {
       <table className='lg:text-lg'>
         <tbody>
           <tr>
-            <td>Price ({products.length} items)</td>
+            <td>Price ({user.cart.length} items)</td>
             <td className='font-medium'>
               &#8377;{totalPrice.toLocaleString()}
             </td>

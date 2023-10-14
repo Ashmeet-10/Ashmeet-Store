@@ -6,7 +6,9 @@ const Home = async () => {
   let products = []
   try {
     await connectToDB()
-    products = await Product.find({})
+    products = await Product.find({}).select(
+      'name rating discountedPrice actualPrice images category'
+    )
     console.log('Working')
   } catch (error) {
     console.log(error)
@@ -14,7 +16,9 @@ const Home = async () => {
 
   return (
     <div className='mx-4 flex min-h-[90vh] flex-col lg:mx-8'>
-      <h2 className='my-6 text-3xl font-bold capitalize lg:my-8 lg:text-4xl xl:my-10 xl:text-5xl'>All products</h2>
+      <h2 className='my-6 text-3xl font-bold capitalize lg:my-8 lg:text-4xl xl:my-10 xl:text-5xl'>
+        All products
+      </h2>
       <ProductsList products={products} />
     </div>
   )

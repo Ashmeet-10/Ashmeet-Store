@@ -9,7 +9,9 @@ import Link from 'next/link'
 
 export async function generateStaticParams() {
   await connectToDB()
-  const products = await Product.find({})
+  const products = await Product.find({}).select(
+    'name rating discountedPrice actualPrice images category'
+  )
   return products.map((product) => ({
     category: product.category.split(' ')[0],
   }))
@@ -18,7 +20,9 @@ export async function generateStaticParams() {
 const Category = async ({ params: { category } }) => {
   console.log('category page')
   await connectToDB()
-  const products = await Product.find({})
+  const products = await Product.find({}).select(
+    'name rating discountedPrice actualPrice images category'
+  )
   const categoryProducts = products.filter((product) =>
     product.category.includes(category)
   )
