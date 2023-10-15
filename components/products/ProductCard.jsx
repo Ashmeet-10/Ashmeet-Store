@@ -6,10 +6,7 @@ import RemoveFromWishlistButton from './RemoveFromWishlistButton'
 const ProductCard = ({ product, wishlist, priority }) => {
   return (
     <div className='overflow-hidden rounded-xl p-4 shadow-[0px_0px_10px_1px] shadow-gray-300 duration-300 ease-in-out hover:scale-105'>
-      <Link
-        href={`/products/${product.category.split(' ')[0]}/${product._id}`}
-        aria-label={`${product.name} ${product.rating} ${product.actualPrice.toLocaleString()} ₹${product.discountedPrice.toLocaleString()}`}
-      >
+      <Link href={`/products/${product.category.split(' ')[0]}/${product._id}`}>
         <div className='relative mx-auto shrink-0 aspect-square w-11/12 bg-white'>
           <Image
             src={product.images[0]}

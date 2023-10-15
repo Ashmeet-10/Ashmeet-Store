@@ -81,7 +81,6 @@ const OrdersPage = async () => {
         >
           <Link
             href={`/products/${product.category.split(' ')[0]}/${product._id}`}
-            aria-label={`go to ${product.name}`}
             className='group'
           >
             <div className='flex items-center space-x-4 md:space-x-10 xl:space-x-16 2xl:space-x-24'>
