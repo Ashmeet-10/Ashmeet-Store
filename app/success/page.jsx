@@ -70,10 +70,7 @@ const page = async ({ searchParams }) => {
             className='flex flex-col space-y-4 border-b border-gray-300 py-5 sm:py-10 lg:space-y-8'
           >
             <Link
-              href={`/products/${product.category.split(' ')[0]}/${
-                product._id
-              }`}
-              aria-label={`go to ${product.name}`}
+              href={`/products/${product.category.split(' ')[0]}/${product._id}`}
               className='group'
             >
               <div className='flex items-center space-x-4 md:space-x-10 xl:space-x-16'>

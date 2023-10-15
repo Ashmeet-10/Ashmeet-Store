@@ -42,7 +42,7 @@ const WishlistPage = async () => {
         <h2 className='mb-12 mt-4 text-center text-2xl font-medium'>
           Your wishlist is empty
         </h2>
-        <Link href='/' aria-label='go to Home page'>
+        <Link href='/'>
           <button
             type='button'
             name='Shop now'

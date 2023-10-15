@@ -16,16 +16,16 @@ const Navbar = () => {
         <SearchBar />
       </div>
       <div className='md:order-1 md:flex md:items-center md:space-x-6'>
-        <Link href='/' className=''>
+        <Link href='/' aria-label='Ashmeet store'>
           <LogoIcon className='w-8 h-8' />
         </Link>
         <div className='hidden space-x-4 md:flex xl:space-x-7 xl:text-lg 2xl:space-x-9'>
-          <Link className="hover:text-gray-400" href="/products/shirts" aria-label='Shirts'>Shirts</Link>
-          <Link className="hover:text-gray-400" href="/products/earphones" aria-label='Earphones'>Earphones</Link>
-          <Link className="hover:text-gray-400" href="/products/shoes" aria-label='Shoes'>Shoes</Link>
-          <Link className="hover:text-gray-400" href="/products/watches" aria-label='Watches'>Watches</Link>
-          <Link className="hover:text-gray-400" href="/products/laptops" aria-label='Laptops'>Laptops</Link>
-          <Link className="hover:text-gray-400" href="/products/mobiles" aria-label='Mobiles'>Mobiles</Link>
+          <Link className="hover:text-gray-400" href="/products/shirts">Shirts</Link>
+          <Link className="hover:text-gray-400" href="/products/earphones">Earphones</Link>
+          <Link className="hover:text-gray-400" href="/products/shoes">Shoes</Link>
+          <Link className="hover:text-gray-400" href="/products/watches">Watches</Link>
+          <Link className="hover:text-gray-400" href="/products/laptops">Laptops</Link>
+          <Link className="hover:text-gray-400" href="/products/mobiles">Mobiles</Link>
         </div>
       </div>
       <Link href='/cart' className='md:order-3' aria-label='Cart'>

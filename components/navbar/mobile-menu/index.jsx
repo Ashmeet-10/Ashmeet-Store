@@ -12,13 +12,13 @@ const MobileMenu = ({onClick}) => {
         <SearchBar onClick={onClick} />
       </div>
       <div className='flex flex-col space-y-2 text-xl'>
-        <Link onClick={onClick} className='hover:text-gray-400' href='/' aria-label='All products'>All</Link>
-        <Link onClick={onClick} className='hover:text-gray-400' href='/products/shirts' aria-label='Shirts'>Shirts</Link>
-        <Link onClick={onClick} className='hover:text-gray-400' href='/products/earphones' aria-label='Earphones'>Earphones</Link>
-        <Link onClick={onClick} className='hover:text-gray-400' href='/products/shoes' aria-label='Shoes'>Shoes</Link>
-        <Link onClick={onClick} className='hover:text-gray-400' href='/products/watches' aria-label='Watches'>Watches</Link>
-        <Link onClick={onClick} className='hover:text-gray-400' href='/products/laptops' aria-label='Laptops'>Laptops</Link>
-        <Link onClick={onClick} className='hover:text-gray-400' href='/products/mobiles' aria-label='Mobiles'>Mobiles</Link>
+        <Link onClick={onClick} className='hover:text-gray-400' href='/'>All</Link>
+        <Link onClick={onClick} className='hover:text-gray-400' href='/products/shirts'>Shirts</Link>
+        <Link onClick={onClick} className='hover:text-gray-400' href='/products/earphones'>Earphones</Link>
+        <Link onClick={onClick} className='hover:text-gray-400' href='/products/shoes'>Shoes</Link>
+        <Link onClick={onClick} className='hover:text-gray-400' href='/products/watches'>Watches</Link>
+        <Link onClick={onClick} className='hover:text-gray-400' href='/products/laptops'>Laptops</Link>
+        <Link onClick={onClick} className='hover:text-gray-400' href='/products/mobiles'>Mobiles</Link>
       </div>
     </div>
   )
