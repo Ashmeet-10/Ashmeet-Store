@@ -14,7 +14,7 @@ const handler = NextAuth({
     async session({ session }) {
       try {
         await connectToDB()
-        const sessionUser = await User.findOne({ email: session.user.email })
+        const sessionUser = await User.findOne({ email: session.user.email }).select('_id')
         session.user.id = sessionUser._id.toString()
         return session
       } catch (error) {
@@ -25,7 +25,7 @@ const handler = NextAuth({
       try {
         await connectToDB()
         // check if a user already exists
-        const userExists = await User.findOne({ email: profile.email })
+        const userExists = await User.findOne({ email: profile.email }).select('_id')
 
         // if not, create a new user
         if (!userExists) {

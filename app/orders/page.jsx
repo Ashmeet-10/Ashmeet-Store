@@ -18,7 +18,7 @@ const OrdersPage = async () => {
     const sessionData = getServerSession()
     const [session, db] = await Promise.all([sessionData, database])
     if (session) {
-      user = await User.findOne({ email: session.user.email })
+      user = await User.findOne({ email: session.user.email }).select('orders')
       user.orders.map((order) =>
         order.products.map((product) =>
           productIds.push({

@@ -17,10 +17,12 @@ const WishlistPage = async () => {
     const sessionData = getServerSession()
     const [session, db] = await Promise.all([sessionData, database])
     if (session) {
-      user = await User.findOne({ email: session.user.email }).populate({
-        path: 'wishlist',
-        select: 'name rating discountedPrice actualPrice images category',
-      })
+      user = await User.findOne({ email: session.user.email })
+        .select('wishlist')
+        .populate({
+          path: 'wishlist',
+          select: 'name rating discountedPrice actualPrice images category',
+        })
       products = user.wishlist
     }
   } catch (error) {

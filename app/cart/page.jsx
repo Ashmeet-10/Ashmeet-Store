@@ -21,13 +21,15 @@ const CartPage = async () => {
     const sessionData = getServerSession()
     const [session, db] = await Promise.all([sessionData, database])
     if (session) {
-      user = await User.findOne({ email: session.user.email }).populate({
-        path: 'cart',
-        populate: {
-          path: 'productId',
-          select: 'name rating discountedPrice actualPrice images category',
-        },
-      })
+      user = await User.findOne({ email: session.user.email })
+        .select('cart')
+        .populate({
+          path: 'cart',
+          populate: {
+            path: 'productId',
+            select: 'name rating discountedPrice actualPrice images category',
+          },
+        })
 
       for (let i = 0; i < user.cart.length; i++) {
         totalPrice += user.cart[i].productId.actualPrice * user.cart[i].quantity
