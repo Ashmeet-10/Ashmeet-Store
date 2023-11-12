@@ -71,7 +71,7 @@ const OrdersPage = async () => {
 
   return (
     <div className='mx-auto flex min-h-[90vh] max-w-6xl flex-col px-4 lg:px-8'>
-      <h1 className='my-6 text-4xl font-bold lg:my-8 xl:my-10 xl:text-5xl'>
+      <h1 className='my-6 text-4xl font-bold tracking-tight lg:my-8 xl:my-10 xl:text-5xl'>
         My Orders
       </h1>
       {products.map((product, idx) => (

@@ -1,7 +1,7 @@
 const FAQPage = () => {
   return (
     <div className='mx-auto min-h-[90vh] max-w-5xl px-4'>
-      <h1 className='my-6 text-6xl font-bold lg:mb-10 lg:mt-12 xl:mt-16 xl:text-7xl'>
+      <h1 className='my-6 text-6xl font-bold tracking-tighter lg:mb-10 lg:mt-12 xl:mt-16 xl:text-7xl'>
         Frequently Asked Questions
       </h1>
       <div className='flex flex-col space-y-12 text-xl text-gray-600 xl:text-2xl'>

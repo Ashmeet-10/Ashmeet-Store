@@ -59,7 +59,7 @@ const WishlistPage = async () => {
 
   return (
     <div className='mx-4 flex min-h-[90vh] flex-col lg:mx-8'>
-      <h1 className='my-6 text-4xl font-bold lg:my-8 xl:my-10 xl:text-5xl'>
+      <h1 className='my-6 text-4xl font-bold tracking-tight lg:my-8 xl:my-10 xl:text-5xl'>
         My Wishlist
       </h1>
       <ProductsList products={products} wishlist={true} />

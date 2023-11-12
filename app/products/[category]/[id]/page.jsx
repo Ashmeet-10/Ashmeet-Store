@@ -67,7 +67,7 @@ const ProductDetailPage = async ({ params }) => {
 
         {product.highlights.length !== 0 && (
           <div className=''>
-            <h3 className='my-2 text-3xl font-semibold sm:my-4 xl:my-6 xl:text-4xl'>
+            <h3 className='my-2 text-3xl font-semibold tracking-tight sm:my-4 xl:my-6 xl:text-4xl'>
               Highlights
             </h3>
             <ul className='list-inside list-disc space-y-2 lg:text-lg xl:text-xl'>
@@ -82,7 +82,7 @@ const ProductDetailPage = async ({ params }) => {
 
         {product.specifications.length !== 0 && (
           <div className='text-sm xl:text-lg'>
-            <h3 className='my-2 text-3xl font-semibold sm:my-4 xl:my-6 xl:text-4xl'>
+            <h3 className='my-2 text-3xl font-semibold tracking-tight sm:my-4 xl:my-6 xl:text-4xl'>
               Specifications
             </h3>
             <div className='space-y-2'>
@@ -104,7 +104,7 @@ const ProductDetailPage = async ({ params }) => {
         )}
 
         <div className=''>
-          <h3 className='my-2 text-3xl font-semibold sm:my-4 xl:my-6 xl:text-4xl'>
+          <h3 className='my-2 text-3xl font-semibold tracking-tight sm:my-4 xl:my-6 xl:text-4xl'>
             Description
           </h3>
           <p className='leading-7 lg:text-lg xl:text-xl xl:leading-8'>

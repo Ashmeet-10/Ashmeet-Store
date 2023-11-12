@@ -28,7 +28,7 @@ const Category = async ({ params: { category } }) => {
   )
   return (
     <div className='mx-4 flex min-h-[90vh] flex-col space-y-8 lg:mx-8 xl:space-y-10'>
-      <h2 className='mt-6 text-3xl font-bold capitalize lg:mt-8 lg:text-4xl xl:mt-10 xl:text-5xl'>
+      <h2 className='mt-6 text-3xl font-bold tracking-tight capitalize lg:mt-8 lg:text-4xl xl:mt-10 xl:text-5xl'>
         {category}
       </h2>
       <div className='flex flex-wrap gap-3'>

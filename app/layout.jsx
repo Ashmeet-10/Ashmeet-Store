@@ -1,11 +1,9 @@
 import './globals.css'
-import { Inter } from 'next/font/google'
+import { GeistSans } from 'geist/font/sans'
 import Navbar from '@components/navbar'
 import Footer from '@components/Footer'
 import Provider from '@components/Provider'
-import { Toaster } from "@components/ui/toaster"
-
-const inter = Inter({ subsets: ['latin'] })
+import { Toaster } from '@components/ui/toaster'
 
 export const metadata = {
   title: 'Ashmeet Store',
@@ -15,7 +13,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang='en'>
-      <body className={inter.className}>
+      <body className={GeistSans.className}>
         <Provider>
           <Navbar />
           {children}

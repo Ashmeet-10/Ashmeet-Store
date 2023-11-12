@@ -16,7 +16,7 @@ const Home = async () => {
 
   return (
     <div className='mx-4 flex min-h-[90vh] flex-col lg:mx-8'>
-      <h2 className='my-6 text-3xl font-bold capitalize lg:my-8 lg:text-4xl xl:my-10 xl:text-5xl'>
+      <h2 className='my-6 text-3xl font-bold capitalize tracking-tight lg:my-8 lg:text-4xl xl:my-10 xl:text-5xl'>
         All products
       </h2>
       <ProductsList products={products} />
