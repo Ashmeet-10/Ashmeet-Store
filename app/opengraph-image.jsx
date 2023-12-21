@@ -3,7 +3,7 @@ import { ImageResponse } from 'next/og'
 
 export const runtime = 'edge'
 
-export default async function OpengraphImage() {
+export default async function Image() {
   return new ImageResponse(
     (
       <div tw='flex h-full w-full flex-col items-center justify-center bg-black'>
