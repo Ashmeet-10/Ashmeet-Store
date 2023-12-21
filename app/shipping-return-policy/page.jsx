@@ -12,7 +12,7 @@ const ShippingAndReturnPolicy = () => {
           shipping and return policy carefully before making a purchase.
         </p>
 
-        <h2 className='font-semibold text-black'>Shipping Information</h2>
+        <h2 className='font-semibold text-2xl text-black/90 mt-6 tracking-tight xl:text-3xl xl:tracking-tighter'>Shipping Information</h2>
         <p>
           <strong>Shipping Methods:</strong> We offer standard and express
           shipping options for most orders. Shipping costs are calculated based
@@ -33,7 +33,7 @@ const ShippingAndReturnPolicy = () => {
           issues, feel free to contact us for assistance.
         </p>
 
-        <h2 className='font-semibold text-black'>Return Policy</h2>
+        <h2 className='font-semibold text-2xl text-black/90 tracking-tight xl:text-3xl xl:tracking-tighter'>Return Policy</h2>
         <p>
           <strong>Return Eligibility:</strong> We accept returns within 10 days
           of the delivery date. To be eligible for a return, items must be
@@ -58,14 +58,12 @@ const ShippingAndReturnPolicy = () => {
           your account, depending on your bank or payment provider.
         </p>
 
-        <h2 className='font-semibold text-black'>Contact Us</h2>
+        <h2 className='font-semibold text-2xl text-black/90 tracking-tight xl:text-3xl xl:tracking-tighter'>Contact Us</h2>
         <p>
           If you have any questions about our Shipping and Return Policy, please
           feel free to contact us. Our customer support team is here to assist
           you.
         </p>
-
-        <p>Last updated: 6 Aug 2023</p>
       </div>
     </div>
   )

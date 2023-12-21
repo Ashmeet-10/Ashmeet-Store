@@ -4,9 +4,9 @@ const FAQPage = () => {
       <h1 className='my-6 text-6xl font-bold tracking-tighter lg:mb-10 lg:mt-12 xl:mt-16 xl:text-7xl'>
         Frequently Asked Questions
       </h1>
-      <div className='flex flex-col space-y-12 text-xl text-gray-600 xl:text-2xl'>
+      <div className='flex flex-col space-y-16 text-xl mt-16 text-gray-600 xl:text-2xl'>
         <div className='space-y-6'>
-          <h2 className='font-semibold text-black'>Orders and Shipping</h2>
+          <h2 className='font-semibold text-black text-3xl tracking-tight xl:text-4xl xl:tracking-tighter'>Orders and Shipping</h2>
           <p>
             <strong>Q: How can I place an order?</strong>
             <br />
@@ -40,7 +40,7 @@ const FAQPage = () => {
         </div>
 
         <div className='space-y-6'>
-          <h2 className='font-semibold text-black'>Returns and Refunds</h2>
+          <h2 className='font-semibold text-black text-3xl tracking-tight xl:text-4xl xl:tracking-tighter'>Returns and Refunds</h2>
           <p>
             <strong>Q: What's your return policy?</strong>
             <br />
@@ -61,7 +61,7 @@ const FAQPage = () => {
         </div>
 
         <div className='space-y-6'>
-          <h2 className='font-semibold text-black'>Account and Security</h2>
+          <h2 className='font-semibold text-black text-3xl tracking-tight xl:text-4xl xl:tracking-tighter'>Account and Security</h2>
           <p>
             <strong>Q: Do I need an account to make a purchase?</strong>
             <br />
@@ -83,15 +83,13 @@ const FAQPage = () => {
         </div>
 
         <div className='space-y-6'>
-          <h2 className='font-semibold text-black'>Contact Us</h2>
+          <h2 className='font-semibold text-black text-3xl tracking-tight xl:text-4xl xl:tracking-tighter'>Contact Us</h2>
           <p>
             If you have a question that hasn't been answered here, don't
             hesitate to contact us. Our customer support team is here to assist
             you with any inquiries you may have.
           </p>
         </div>
-
-        <p>Last updated: 6 Aug 2023</p>
       </div>
     </div>
   )

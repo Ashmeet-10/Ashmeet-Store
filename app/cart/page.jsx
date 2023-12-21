@@ -9,8 +9,6 @@ import LoginButton from '@components/navbar/login'
 import ShoppingBagIcon from '@components/icons/shopping-bag'
 import CheckoutButton from '@components/cart/CheckoutButton'
 
-export const dynamic = 'force-dynamic'
-
 const CartPage = async () => {
   let productsForCheckout = [],
     totalPrice = 0,
@@ -100,6 +98,7 @@ const CartPage = async () => {
                     src={productId.images[0]}
                     alt={productId.name}
                     fill
+                    sizes='40vw'
                     quality={90}
                     className='object-contain'
                   />

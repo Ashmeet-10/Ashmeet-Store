@@ -70,7 +70,9 @@ const page = async ({ searchParams }) => {
             className='flex flex-col space-y-4 border-b border-gray-300 py-5 sm:py-10 lg:space-y-8'
           >
             <Link
-              href={`/products/${product.category.split(' ')[0]}/${product._id}`}
+              href={`/products/${product.category.split(' ')[0]}/${
+                product._id
+              }`}
               className='group'
             >
               <div className='flex items-center space-x-4 md:space-x-10 xl:space-x-16'>
@@ -80,6 +82,7 @@ const page = async ({ searchParams }) => {
                       src={product.images[0]}
                       alt={product.name}
                       fill
+                      sizes='40vw'
                       quality={90}
                       className='object-contain shrink-0'
                     />
@@ -106,7 +109,7 @@ const page = async ({ searchParams }) => {
       </div>
       <div className='mt-8 flex space-x-8 self-start text-2xl font-bold'>
         <p>Amount Paid :</p>
-        <p>&#8377;{checkoutSession.amount_total / 100}</p>
+        <p>&#8377;{(checkoutSession.amount_total / 100).toLocaleString()}</p>
       </div>
     </div>
   )

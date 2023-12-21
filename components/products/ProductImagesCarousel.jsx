@@ -12,6 +12,7 @@ const ProductImagesCarousel = ({ productImages }) => {
             <Image
               src={image}
               fill
+              sizes='(max-width: 639px) 95vw, (max-width: 1400px) 40vw, 30vw'
               quality={90}
               className='object-contain'
               priority={index === 0}

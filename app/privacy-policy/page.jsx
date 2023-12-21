@@ -4,7 +4,7 @@ const PrivacyPolicy = () => {
       <h1 className='my-6 text-6xl font-bold tracking-tighter lg:mb-10 lg:mt-12 xl:mt-16 xl:text-7xl'>
         Privacy Policy
       </h1>
-      <div className='flex flex-col space-y-4 text-xl text-gray-600 xl:text-2xl'>
+      <div className='flex flex-col text-xl text-gray-600 xl:text-2xl'>
         <p>
           At Ashmeet Store, we take your privacy seriously. This Privacy Policy
           explains how we collect, use, and disclose your personal information
@@ -12,9 +12,7 @@ const PrivacyPolicy = () => {
           to the terms outlined in this policy.
         </p>
 
-        <h2 className='font-semibold text-black'>
-          Information We Collect
-        </h2>
+        <h2 className='font-semibold text-2xl text-black/90 mt-8 mb-2 tracking-tight xl:text-3xl xl:tracking-tighter'>Information We Collect</h2>
 
         <p>
           We may collect various types of information from you when you use our
@@ -24,7 +22,7 @@ const PrivacyPolicy = () => {
           our website.
         </p>
 
-        <h2 className='font-semibold text-black'>
+        <h2 className='font-semibold text-2xl text-black/90 mt-8 mb-2 tracking-tight xl:text-3xl xl:tracking-tighter'>
           How We Use Your Information
         </h2>
 
@@ -36,9 +34,7 @@ const PrivacyPolicy = () => {
           services. - Complying with legal obligations.
         </p>
 
-        <h2 className='font-semibold text-black'>
-          Sharing Your Information
-        </h2>
+        <h2 className='font-semibold text-2xl text-black/90 mt-8 mb-2 tracking-tight xl:text-3xl xl:tracking-tighter'>Sharing Your Information</h2>
 
         <p>
           We may share your personal information with: - Third-party service
@@ -47,9 +43,7 @@ const PrivacyPolicy = () => {
           protect our rights.
         </p>
 
-        <h2 className='font-semibold text-black'>
-          Your Choices
-        </h2>
+        <h2 className='font-semibold text-2xl text-black/90 mt-8 mb-2 tracking-tight xl:text-3xl xl:tracking-tighter'>Your Choices</h2>
 
         <p>
           You have the right to: - Access and update your personal information.
@@ -58,9 +52,7 @@ const PrivacyPolicy = () => {
           these rights.
         </p>
 
-        <h2 className='font-semibold text-black'>
-          Security
-        </h2>
+        <h2 className='font-semibold text-2xl text-black/90 mt-8 mb-2 tracking-tight xl:text-3xl xl:tracking-tighter'>Security</h2>
 
         <p>
           We take appropriate measures to protect your personal information, but
@@ -68,16 +60,12 @@ const PrivacyPolicy = () => {
           completely secure. We cannot guarantee absolute security.
         </p>
 
-        <h2 className='font-semibold text-black'>
-          Contact Us
-        </h2>
+        <h2 className='font-semibold text-2xl text-black/90 mt-8 mb-2 tracking-tight xl:text-3xl xl:tracking-tighter'>Contact Us</h2>
 
         <p>
           If you have any questions about our Privacy Policy, please contact us
           at ashmeet2846@gmail.com
         </p>
-
-        <p>Last updated: 6 Aug 2023</p>
       </div>
     </div>
   )

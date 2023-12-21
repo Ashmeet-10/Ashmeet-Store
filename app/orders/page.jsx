@@ -90,6 +90,7 @@ const OrdersPage = async () => {
                     src={product.images[0]}
                     alt={product.name}
                     fill
+                    sizes='40vw'
                     quality={90}
                     className='object-contain'
                   />

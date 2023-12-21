@@ -1,5 +1,7 @@
 import './globals.css'
 import { GeistSans } from 'geist/font/sans'
+import { SpeedInsights } from '@vercel/speed-insights/next'
+import { Analytics } from '@vercel/analytics/react'
 import Navbar from '@components/navbar'
 import Footer from '@components/Footer'
 import Provider from '@components/Provider'
@@ -15,11 +17,15 @@ export default function RootLayout({ children }) {
     <html lang='en'>
       <body className={GeistSans.className}>
         <Provider>
-          <Navbar />
-          {children}
-          <Footer />
-          <Toaster />
+          <div className='max-w-[1900px] mx-auto'>
+            <Navbar />
+            {children}
+            <Footer />
+            <Toaster />
+          </div>
         </Provider>
+        <SpeedInsights />
+        <Analytics />
       </body>
     </html>
   )

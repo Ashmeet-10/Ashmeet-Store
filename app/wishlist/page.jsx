@@ -7,8 +7,6 @@ import LoginButton from '@components/navbar/login'
 import ProductsList from '@components/products/ProductsList'
 import HeartIconFilled from '@components/icons/heart-filled'
 
-export const dynamic = 'force-dynamic'
-
 const WishlistPage = async () => {
   let products = []
   let user = null

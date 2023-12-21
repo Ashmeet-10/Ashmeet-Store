@@ -11,6 +11,7 @@ const ProductCard = ({ product, wishlist, priority }) => {
           <Image
             src={product.images[0]}
             fill
+            sizes='(max-width: 639px) 80vw, (max-width: 1023px) 32vw, (max-width: 1279px) 22vw, 16vw'
             priority={priority || false}
             quality={90}
             className='object-contain'
