@@ -14,7 +14,7 @@ const Button = () => {
     <button
       type='submit'
       aria-label='Add to Cart'
-      className='my-4 rounded-xl bg-black px-3 py-2 text-white hover:bg-gray-700 xl:mt-6'
+      className='my-4 rounded-xl bg-black px-3 py-2 text-white ease-in-out duration-300 hover:bg-gray-700 xl:mt-6'
       disabled={pending}
     >
       {pending ? 'Adding to Cart...' : 'Add to Cart'}

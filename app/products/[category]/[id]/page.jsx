@@ -22,7 +22,9 @@ const ProductDetailPage = async ({ params }) => {
       <div className='mx-4 my-4 max-w-7xl space-y-10 sm:mx-8 sm:my-8 sm:space-y-16 md:mx-12 xl:space-y-20'>
         <div className='sm:flex sm:items-center sm:space-x-8 md:space-x-16 lg:space-x-28 xl:space-x-36 2xl:space-x-48'>
           <div className='mx-auto max-w-xs sm:mx-0 sm:w-1/2 sm:max-w-sm sm:rounded-2xl sm:border sm:border-gray-400 sm:px-6 sm:pb-4 sm:pt-6 sm:shadow-[0px_0px_50px_5px] sm:shadow-gray-300 lg:max-w-md'>
-            <ProductImagesCarousel productImages={product.images} />
+            <div className='px-7'>
+              <ProductImagesCarousel productImages={product.images} />
+            </div>
             <div className='my-2 flex justify-end'>
               <AddToWishlistButton
                 product={product._id.toString()}
