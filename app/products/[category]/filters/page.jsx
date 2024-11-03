@@ -7,7 +7,11 @@ import Product from '@models/product'
 import connectToDB from '@utils/database'
 import Link from 'next/link'
 
-const page = async ({ params: { category }, searchParams }) => {
+const page = async (props) => {
+  const searchParams = await props.searchParams
+  const params = await props.params
+  const { category } = params
+
   console.log('filters page')
   await connectToDB()
   const products = await Product.find({}).select(

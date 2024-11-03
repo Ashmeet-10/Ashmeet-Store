@@ -17,7 +17,11 @@ export async function generateStaticParams() {
   }))
 }
 
-const Category = async ({ params: { category } }) => {
+const Category = async (props) => {
+  const params = await props.params
+
+  const { category } = params
+
   console.log('category page')
   await connectToDB()
   const products = await Product.find({}).select(

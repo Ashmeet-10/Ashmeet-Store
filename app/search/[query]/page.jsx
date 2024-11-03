@@ -3,7 +3,11 @@ import ProductsList from '@components/products/ProductsList'
 import Product from '@models/product'
 import connectToDB from '@utils/database'
 
-const SearchResultsPage = async ({ params: { query } }) => {
+const SearchResultsPage = async (props) => {
+  const params = await props.params
+
+  const { query } = params
+
   let products, filteredProducts
   // remove %20 from query
   let searchQuery = query.replace(/%20/g, ' ')

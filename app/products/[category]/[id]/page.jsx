@@ -10,10 +10,12 @@ export async function generateStaticParams() {
   const products = await Product.find({})
   return products.map((product) => ({
     id: product._id.toString(),
+    category: product.category.split(' ')[0],
   }))
 }
 
-const ProductDetailPage = async ({ params }) => {
+const ProductDetailPage = async (props) => {
+  const params = await props.params
   await connectToDB()
   const product = await Product.findById(params.id)
 

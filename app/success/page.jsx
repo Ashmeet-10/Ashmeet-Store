@@ -11,7 +11,8 @@ const serverUrl = isProduction
   ? process.env.NEXT_PUBLIC_SERVER_URL
   : 'http://localhost:3000'
 
-const page = async ({ searchParams }) => {
+const page = async (props) => {
+  const searchParams = await props.searchParams
   console.log('success page')
   const { sessionId } = searchParams
   let products = [],
